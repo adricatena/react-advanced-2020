@@ -5,8 +5,12 @@ const UseStateArray = () => {
   const [people, setPeople] = React.useState(data);
   // el useState se puede importar derecho en la variable si sabemos que lo vamos a utilizar solo una vez dentro del componente
   const removeItem = (id) => {
-    let newPeople = people.filter((person) => person.id !== id);
-    setPeople(newPeople);
+    //let newPeople = people.filter((person) => person.id !== id);
+    //setPeople(newPeople);
+    setPeople((oldPeople) => {
+      let newPeople = oldPeople.filter((person) => person.id !== id);
+      return newPeople;
+    });
   };
   return (
     <>
