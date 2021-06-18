@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { Fragment } from "react";
 // by default runs after every re-render
 // cleanup function
 // second parameter
+
 const UseEffectBasics = () => {
-  useEffect(()=>{
+  const [value, setValue] = useState(0);
+  useEffect(() => {
     console.log("call useEffect");
+    document.title = `New messages (${value})`;
   });
   console.log("render component");
-  return <h2>useEffect Basics</h2>;
+  return (
+    <Fragment>
+      <h1>{value}</h1>
+      <button className="btn" onClick={() => setValue(value + 1)}>
+        Click me!
+      </button>
+    </Fragment>
+  );
 };
 
 export default UseEffectBasics;
