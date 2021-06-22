@@ -6,10 +6,18 @@ import { Fragment } from "react";
 
 const UseEffectBasics = () => {
   const [value, setValue] = useState(0);
+
   useEffect(() => {
     console.log("call useEffect");
-    document.title = `New messages (${value})`;
-  });
+    if (value >= 1) {
+      document.title = `New messages (${value})`;
+    }
+  }, [value]);
+
+  useEffect(() => {
+    console.log("Hola mundo desde otro useEffect");
+  }, []);
+
   console.log("render component");
   return (
     <Fragment>
