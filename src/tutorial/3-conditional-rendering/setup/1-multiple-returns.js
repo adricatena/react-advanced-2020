@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-const url = "https://api.github.com/users/QuincyLarson";
+
+const url = "https://api.github.com/users/QuincyLarsons";
+
 const MultipleReturns = () => {
+
   const [loading, setLoading] = useState(true);
   //  Podemos setearlo por defecto como true y luego cuando se cargue darle false, o iniciarlo false y cuando empiece la carga darle true
   //const [loading, setLoading] = useState(false);
@@ -14,15 +17,19 @@ const MultipleReturns = () => {
       const user = await response.json();
       setUser(user.name);
       setLoading(false);
+      setError(false);
     } else {
       setError(true);
       setLoading(false);
-      throw new Error(response.statusText);
+      throw new Error(response.status);
     }
   };
 
   useEffect(() => {
-    getUsers();
+    getUsers().catch((error) => {
+      console.log(error);
+    });
+    //  Al error lo podemos manejar con un try...catch como a su vez derecho con un catch cuando hacemos la peticion
   }, []);
 
   if (loading) {
@@ -44,8 +51,6 @@ const MultipleReturns = () => {
       </div>
     );
   }
-
-  return <h2>multiple returns</h2>;
 };
 
 export default MultipleReturns;
