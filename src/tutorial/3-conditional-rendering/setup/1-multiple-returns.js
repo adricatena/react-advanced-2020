@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 const url = "https://api.github.com/users/QuincyLarsons";
 
 const MultipleReturns = () => {
-
   const [loading, setLoading] = useState(true);
   //  Podemos setearlo por defecto como true y luego cuando se cargue darle false, o iniciarlo false y cuando empiece la carga darle true
   //const [loading, setLoading] = useState(false);
